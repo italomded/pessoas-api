@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.domain.Pessoa;
 import com.example.demo.dto.PessoaDTO;
 import com.example.demo.dto.ResourceChangeDTO;
-import com.example.demo.dto.ValidationErrorDTO;
 import com.example.demo.dto.form.PessoaForm;
 import com.example.demo.service.PessoaService;
 import jakarta.validation.Valid;
@@ -57,7 +56,6 @@ public class PessoaController {
     @PostMapping
     public ResponseEntity<?> criar(@RequestBody @Valid PessoaForm form) {
         Long result = pessoaService.criarPessoa(form);
-        //if (result == null) return ResponseEntity.badRequest().body(new ValidationErrorDTO("nome", "este nome já está me uso"));
         return ResponseEntity.ok(new ResourceChangeDTO(result));
     }
 }
